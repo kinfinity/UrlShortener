@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.111",
+    "@types/node": "^18.15.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "eslint": "^8.35.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -19,5 +21,11 @@
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.288.0",
+    "aws-lambda": "^1.0.7",
+    "dotenv": "^16.0.3",
+    "winston": "^3.8.2"
   }
 }

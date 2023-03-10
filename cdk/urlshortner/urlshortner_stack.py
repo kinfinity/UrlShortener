@@ -128,7 +128,7 @@ class UrlShortnerStack(Stack):
         lambda_function = _lambda.DockerImageFunction(
             self,
             "UrlShortnerProxyLambda",
-            role= lambda_role.role_arn,
+            role= lambda_role,
             code=_lambda.DockerImageCode.from_ecr(ecr_repo),# .repository_uri_for_tag("url-shortner:latest-dev")
             vpc=vpc,
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),

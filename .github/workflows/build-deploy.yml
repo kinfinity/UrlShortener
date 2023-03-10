@@ -55,5 +55,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Deploy AWS infrastructure
+        working-directory: ./cdk
         run: |
-          cdk deploy
+          cdk deploy -c env=dev
+# cdk bootstrap locally first

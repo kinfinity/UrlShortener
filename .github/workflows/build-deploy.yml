@@ -1,7 +1,7 @@
 name: URL SHORTNER BuildRelease
 on:
   push:
-    branches: [ feat/vpc-setup ]
+    branches: [ feat/lambda-setup ]
     paths: 
     - "url-shortner/**"
     - ".github/workflows/build-deploy.yml"
@@ -57,5 +57,5 @@ jobs:
       - name: Deploy AWS infrastructure
         working-directory: ./cdk
         run: |
-          cdk deploy -c env=dev
+          cdk deploy -c env=dev --require-approval never
 # cdk bootstrap locally first

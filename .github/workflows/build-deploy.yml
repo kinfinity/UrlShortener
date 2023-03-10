@@ -49,6 +49,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Install dependencies
+        working-directory: ./cdk
         run: |
           npm install -g aws-cdk@latest
           pip install -r requirements.txt

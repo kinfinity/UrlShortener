@@ -1,7 +1,7 @@
 name: URL SHORTNER BuildRelease
 on:
   push:
-    branches: [ development ]
+    branches: [ feat/url-shortner ]
     paths: 
     - "url-shortner/**"
     - ".github/workflows/build-deploy.yml"
@@ -82,8 +82,8 @@ jobs:
         id: gen_tags
         run: |
           IMAGE_NAME="${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}"
-          TAGS="$TAGS,${IMAGE_NAME}:latest-dev"
           TAGS="${IMAGE_NAME}:${{ env.IMAGE_TAG }}"
+          TAGS="$TAGS,${IMAGE_NAME}:latest-dev"
           echo ::set-output name=tags::$TAGS
 
 

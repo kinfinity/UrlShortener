@@ -1,7 +1,7 @@
 name: URL SHORTNER BuildRelease
 on:
   push:
-    branches: [ main ]
+    branches: [ development ]
     paths: 
     - "url-shortner/**"
     - ".github/workflows/build-deploy.yml"

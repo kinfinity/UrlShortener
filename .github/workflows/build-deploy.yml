@@ -57,5 +57,5 @@ jobs:
       - name: Deploy AWS infrastructure
         working-directory: ./cdk
         run: |
-          cdk deploy -c env=dev
+          cdk deploy -c env=dev --require-approval never
 # cdk bootstrap locally first

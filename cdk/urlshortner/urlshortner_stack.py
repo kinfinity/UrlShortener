@@ -41,10 +41,10 @@ class UrlShortnerStack(Stack):
         )
 
         # get image uri
-        ecr_repo = ecr.Repository.from_repository_arn(
+        ecr_repo = ecr.Repository.from_repository_name(
             self, 
             "UrlShortnerRepo",
-            "arn:aws:ecr:us-east-2:158661602367:url-shortner" # us-east-2 | docker tag url-shortner:latest 158661602367.dkr.ecr.us-east-1.amazonaws.com/url-shortner:latest
+            "url-shortner" # us-east-2 | docker tag url-shortner:latest 158661602367.dkr.ecr.us-east-1.amazonaws.com/url-shortner:latest
         )
         
         # Create an IAM role for the Lambda function

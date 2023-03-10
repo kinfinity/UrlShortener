@@ -1,7 +1,7 @@
 name: URL SHORTNER BuildRelease
 on:
   push:
-    branches: [ feat/lambda-setup ]
+    branches: [ main ]
     paths: 
     - "url-shortner/**"
     - ".github/workflows/build-deploy.yml"

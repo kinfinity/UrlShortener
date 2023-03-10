@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": ".github"
+		},
+		{
+			"path": "cdk"
+		},
+		{
+			"path": "url-shortner"
+		},
+		{
+			"path": "Notes"
+		}
+	],
+	"settings": {
+		"editor.tabSize": 2,
+		"editor.formatOnSave": true
+	}
+}

@@ -1,0 +1,38 @@
+name: URL SHORTNER BuildRelease
+on:
+  push:
+    branches: [ main ]
+    paths: 
+    - "url-shortner/**"
+    - ".github/workflows/build-deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+
+env:
+  AWS_REGION: us-east-2
+  ECR_REPOSITORY: url-shortner
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  lambdaBuildTest:
+    name: Project Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+  lambdaImageBuildPush:
+    name: Image Build
+    needs: [ lambdaBuildTest ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+  deployCDK:
+    needs: [ lambdaImageBuildPush ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3

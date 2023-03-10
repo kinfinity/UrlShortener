@@ -1,7 +1,7 @@
 name: URL SHORTNER BuildRelease
 on:
   push:
-    branches: [ main ]
+    branches: [ feat/vpc-setup ]
     paths: 
     - "url-shortner/**"
     - ".github/workflows/build-deploy.yml"
@@ -36,3 +36,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        
+      # no time to setup oicd with assume role 
+      # https://github.com/aws-actions/configure-aws-credentials
+      - name: Configure AWS credentials
+        id: assume-role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-session-name: "GithubAction-Session"
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Install dependencies
+        working-directory: ./cdk
+        run: |
+          npm install -g aws-cdk@latest
+          pip install -r requirements.txt
+
+      - name: Deploy AWS infrastructure
+        working-directory: ./cdk
+        run: |
+          cdk deploy -c env=dev
+# cdk bootstrap locally first
